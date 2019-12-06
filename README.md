@@ -20,4 +20,8 @@ To avoid such problems we need to follow two guidelines.
       - app
         - Code
         
-        
+# Service Spec
+Followed below will be details about each Service.
+Will talk aboout the general idea, app architecture, APIs and whatever you feel relavent.
+
+
