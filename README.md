@@ -8,7 +8,7 @@ To avoid such problems we need to follow two guidelines.
   
   2. Format - there is a simple yet important format that describes the way we save and organize our code. You are welcome to criticize and offer new ways of work, but you must follow the format the team has decided on.
   
-# Code Foramt
+## Code Foramt
 
 - Main Repo
     - Service Name
@@ -20,8 +20,18 @@ To avoid such problems we need to follow two guidelines.
       - app
         - Code
         
-# Service Spec
+## Service Spec
 Followed below will be details about each Service.
 Will talk aboout the general idea, app architecture, APIs and whatever you feel relevant.
 
+### SecurityCamera
+
+### Car
+The Car will be made from two IOT devices phsically connected, a Car Base, Motor, Wheels, and a Car Camera.
+
+#### CarBase
+
+#### CarCamera
+
+### Alarm
 
