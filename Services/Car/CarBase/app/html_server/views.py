@@ -26,7 +26,7 @@ video_dir.home_x_y()
 car_dir.home()
 
 # Read config file
-FILE_CONFIG = "config"
+FILE_CONFIG = "/home/pi/app/config"
 offset = "0"
 offset_x = "0"
 offset_y = "0"
