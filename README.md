@@ -22,6 +22,6 @@ To avoid such problems we need to follow two guidelines.
         
 # Service Spec
 Followed below will be details about each Service.
-Will talk aboout the general idea, app architecture, APIs and whatever you feel relavent.
+Will talk aboout the general idea, app architecture, APIs and whatever you feel relevant.
 
 
