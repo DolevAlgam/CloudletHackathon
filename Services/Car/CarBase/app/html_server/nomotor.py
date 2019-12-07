@@ -37,13 +37,13 @@ def motor1(x):
 	pass
 
 def forward():
-	print("Dolev Gever")
+	pass
 
 def backward():
-	print("Matan King")
+	pass
 
 def forwardWithSpeed(spd = 50):
-	print("Dolev Gever in speed of 100")
+	pass
 
 def backwardWithSpeed(spd = 50):
 	pass

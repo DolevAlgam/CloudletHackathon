@@ -3,6 +3,7 @@ from django.shortcuts import render
 import novideo_dir as video_dir
 import nocar_dir as car_dir
 import nomotor as motor
+import car_patrols
 import os
 
 
@@ -47,15 +48,15 @@ for line in open(FILE_CONFIG):
 
 def motor_forward(request):
 	motor.forward()
-	return HttpResponse("motor forward")
+	return HttpResponse("Forward")
 
 def motor_backward(request):
 	motor.backward()
-	return HttpResponse("motor backward")
+	return HttpResponse("Backward")
 
 def motor_stop(request):
 	motor.ctrl(0)
-	return HttpResponse("motor stop")
+	return HttpResponse("Stop")
 
 def motor_set_speed(request, speed):
 	speed = int(speed)
@@ -72,6 +73,14 @@ def turning(request, angle):
 	car_dir.turn(angle)
 	text = "Turing angle", angle
 	return HttpResponse(text)
+
+def left(request):
+	car_dir.turn_left()
+	return HttpResponse("Turning Left")
+
+def right(request):
+        car_dir.turn_right()
+        return HttpResponse("Turning Right")
 
 def camera_increase_y(request):
 	video_dir.move_increase_y()
@@ -183,3 +192,18 @@ def test(request, direction, text):
 
 def client(request):
     	return render(request, 'client.html')
+
+
+def scenario1(request):
+	car_patrols.scenario1()
+	return HttpResponse("Running Scenario1")
+
+def scenario2(request):
+	section = request.path[-1]
+	if section == "A":
+		car_patrols.sectionA()
+		return HttpResponse("Scanning Section A")
+	elif section == "B":
+		car_patrols.sectionB()
+		return HttpResponse("Scanning Section B")
+	return HttpResponse("Unknown Section")
