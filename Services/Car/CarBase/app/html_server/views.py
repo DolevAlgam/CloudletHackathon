@@ -196,14 +196,14 @@ def client(request):
 
 def scenario1(request):
 	car_patrols.scenario1()
-	return HttpResponse("Running Scenario1")
+	return HttpResponse("Scenario1 Ran")
 
 def scenario2(request):
 	section = request.path[-1]
 	if section == "A":
 		car_patrols.sectionA()
-		return HttpResponse("Scanning Section A")
+		return HttpResponse("Section A Scanned")
 	elif section == "B":
 		car_patrols.sectionB()
-		return HttpResponse("Scanning Section B")
+		return HttpResponse("Section B Scanned")
 	return HttpResponse("Unknown Section")
