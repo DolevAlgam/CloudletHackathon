@@ -1,53 +1,50 @@
-import novideo_dir as video_dir
-import nocar_dir as car_dir
-import nomotor as motor
 import time
 import requests
+import sts
 
 def scanSuspect():
 	r = requests.get('http://jetson/scan')
         if r.text == "attack":
-                motor.setSpeed(200)
-                motor.forward()
+                sts.setSpeed(100)
+                sts.forward()
                 time.sleep(1)
-                motor.ctrl(0)
+                sts.stop()
 	return r.text
 
 def scenario1():
-	motor.forward()
+	sts.forward()
 	time.sleep(5)
-	motor.ctrl(0)
+	sts.stop()
 	scanSuspect()
 	if r.text != "attack":
-		motor.backward()
+		sts.backward()
 		time.sleep(5)
-		motor.ctrl(0)
+		sts.stop()
 
 def sectionA():
-	motor.forward()
+	sts.forward()
 	time.sleep(3)
-	car_dir.turn_right()
+	sts.turnRight()
 	time.sleep(2)
-	motor.ctrl(0)
+	sts.stop()
 	scanSuspect()
         if r.text != "attack":
-                motor.backward()
+                sts.backward()
                 time.sleep(2)
-		car_dir.turn_right()
+		sts.turnRight()
 	        time.sleep(3)
-                motor.ctrl(0)
+                sts.stop()
 
 def sectionB():
-	motor.forward()
+	sts.forward()
         time.sleep(2)
-        car_dir.turn_left()
+        sts.turnLeft()
         time.sleep(3)
-        motor.ctrl(0)
+        sts.stop()
 	scanSuspect()
         if r.text != "attack":
-                motor.backward()
+                sts.backward()
                 time.sleep(3)
-                car_dir.turn_right()
+                sts.turnRight()
                 time.sleep(2)
-                motor.ctrl(0)
-
+                sts.stop()
