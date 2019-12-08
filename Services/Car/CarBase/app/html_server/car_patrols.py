@@ -9,12 +9,12 @@ def scenario1():
 	time.sleep(5)
 	motor.ctrl(0)
 	r = requests.get('http://jetson/scenario1')
-	if r.text == "attack"
+	if r.text == "attack":
 	motor.setSpeed(200)
 		motor.forward()
 		time.sleep(1)
 		motor.ctrl(0)
-	else
+	else:
 		motor.backward()
 		time.sleep(5)
 		motor.ctrl(0)
