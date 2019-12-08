@@ -30,6 +30,3 @@ else
 fi
 
 echo "detected $DEVICE_TYPE"
-
-# Now that we have setup i2c, start our script
-python sts.py

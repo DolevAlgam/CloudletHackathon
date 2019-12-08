@@ -1,10 +1,19 @@
-FROM resin/raspberry-pi-alpine-python
+FROM resin/%%RESIN_MACHINE_NAME%%-python
+ENV INITSYSTEM on
+
+RUN apt-get update \
+	&& apt-get install \
+		python-smbus \
+		python-pip
+
+RUN pip install -U setuptools
+RUN pip install explorerhat requests django smbus
 
 ADD ./app /home/pi/app
 WORKDIR /home/pi/app
 
-RUN pip2 install django smbus requests
+RUN chmod +x setup-i2c.sh
+RUN ["./setup-i2c.sh"]
 
-#RUN python /home/pi/Sunfounder_Smart_Video_Car_Kit_for_RaspberryPi/i2cHelper.py << "y"
 RUN python manage.py migrate
-CMD python /home/pi/app/manage.py runserver 0.0.0.0:8000
+CMD python manage.py runserver 0.0.0.0:8000

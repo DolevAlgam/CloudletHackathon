@@ -1,5 +1,8 @@
 from django.http import HttpResponse
 from django.shortcuts import render
+import novideo_dir as video_dir
+import nocar_dir as car_dir
+import nomotor as motor
 import car_patrols
 import os
 
