@@ -36,8 +36,9 @@ The Car will be made from two IOT devices phsically connected, a Car Base, Motor
 ### Alarm
 
 ## APIs
-Here we will document all API our services use to talk to each other.
+Here we will document all API our services use to talk to each other.<br>
 example url: http://car:8000/forward
+
 ### Car
 #### CarBase
 ##### Simple Remote APIs
@@ -52,6 +53,7 @@ example url: http://car:8000/forward
 * scenario2/sectionB - initialize scan of sectionB
 #### CarCamera - Jetson
 * scan - initialize weapon detection -- returns string "attack" or "back"
+
 ### Alarm
 * on - start alarm
 * off - stop alarm
