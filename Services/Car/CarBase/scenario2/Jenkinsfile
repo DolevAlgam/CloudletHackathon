@@ -1,0 +1,52 @@
+pipeline {
+  environment {
+    registry = "matancarmeli7/car"
+    registryCredential = 'dockerhub'
+    dockerImage = ''
+  }
+  agent any
+  stages {
+    stage('Cloning Git') {
+      steps {
+        git 'https://github.com/DolevAlgam/CloudletHackathon.git'
+      }
+    }
+    stage('Building image') {
+      steps{
+        script {
+          dockerImage = docker.build("$registry:$BUILD_NUMBER", "Services/Car/CarBase/scenario2") 
+        }
+      }
+    }
+    stage('Deploy Image') {
+      steps{
+        script {
+          docker.withRegistry( '', registryCredential ) {
+            dockerImage.push()
+          }
+        }
+      }
+    }
+    stage('Remove Unused docker image') {
+      steps{
+        sh "docker rmi $registry:$BUILD_NUMBER"
+      }
+    }
+    stage('template the kubernetes creation yml ') {
+      steps{
+        ansiblePlaybook(
+          playbook: 'Services/Car/CarBase/scenario2/ansible_playbooks/pre-kubeDeploy.yml',
+          extraVars: [
+              buildId: '$BUILD_NUMBER',
+              jobName: '$JOB_NAME',
+	      registry: '$registry'
+          ])
+      }
+    }
+    stage('deploy the application on kubernetes cluster') {
+        steps{
+            sh "kubectl apply -f /var/lib/jenkins/workspace/$JOB_NAME/Services/Car/CarBase/scenario2/kubernetes_deploy/full-deployment.yml"
+        }
+    }
+  }
+}
