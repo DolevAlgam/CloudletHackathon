@@ -8,7 +8,7 @@ pipeline {
   stages {
     stage('Cloning Git') {
       steps {
-        git 'https://github.com/matancarmeli7/test1.git'
+        git 'https://github.com/DolevAlgam/CloudletHackathon.git'
       }
     }
     stage('Building image') {
@@ -35,7 +35,7 @@ pipeline {
     stage('template the kubernetes creation yml ') {
       steps{
         ansiblePlaybook(
-          playbook: 'pre-kubeDeploy.yml',
+          playbook: 'ansible_playbooks/pre-kubeDeploy.yml',
           extraVars: [
               buildId: '$BUILD_NUMBER',
               jobName: '$JOB_NAME',
@@ -45,7 +45,7 @@ pipeline {
     }
     stage('deploy the application on kubernetes cluster') {
         steps{
-            sh "kubectl apply -f /var/lib/jenkins/workspace/$JOB_NAME/kubernetes_deploy/full-deployment.yml"
+            sh "kubectl apply -f /var/lib/jenkins/workspace/$JOB_NAME/Services/Alarm/senerio1/kubernetes_deploy/full-deployment.yml"
         }
     }
   }
