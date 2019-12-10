@@ -1,6 +1,6 @@
 FROM matancarmeli7/rpi-raspbian-opencv:latest
 RUN [ "cross-build-start" ]
-RUN pip3 install playsound
+RUN pip3 install playsound flask 
 COPY alarmSound.py .
 COPY Battlefield-3-M-COM-alarm-sound.mp3 .
 RUN [ "cross-build-end" ]
