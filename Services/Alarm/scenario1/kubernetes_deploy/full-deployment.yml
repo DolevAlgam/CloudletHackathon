@@ -28,6 +28,9 @@ spec:
       kubernetes.io/hostname: raspberrypi3
       containers:
       - image: {{registry}}:{{buildId}}
+        env:
+        - name: HOSTIP
+          value: "172.20.10.2"
         imagePullPolicy: IfNotPresent
         name: alarm
         resources: {}
