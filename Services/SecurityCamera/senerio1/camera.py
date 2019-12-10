@@ -36,7 +36,7 @@ class VideoCamera(object):
             flags=cv2.CASCADE_SCALE_IMAGE
         )
         if len(objects) > 0 and time.time() > close_time:
-            requests.get(url= 'http://192.168.1.32:5000/api/test')
+            requests.get(url= 'http://raspberrypi2:31705/alarm')
             close_time=time.time()+delay
         # Draw a rectangle around the objects
         for (x, y, w, h) in objects:
