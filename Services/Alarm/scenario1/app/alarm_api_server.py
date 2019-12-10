@@ -9,7 +9,7 @@ app = flask.Flask(__name__)
 
 @app.route('/on', methods=['GET'])
 def on():
-	return flask.Response(response="on", status=200, mimetype='text/xml')
 	r = requests.get(GETURL)
+	return flask.Response(response="on", status=200, mimetype='text/xml')
 
 app.run(host='0.0.0.0', port=5000, debug=False)
