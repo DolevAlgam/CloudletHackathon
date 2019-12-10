@@ -3,8 +3,8 @@ kind: Deployment
 metadata:
   generation: {{buildId}}
   labels:
-    app: security_camera
-  name: security_camera
+    app: security-camera
+  name: security-camera
   namespace: default
 spec:
   progressDeadlineSeconds: 600
@@ -12,7 +12,7 @@ spec:
   revisionHistoryLimit: 10
   selector:
     matchLabels:
-      app: security_camera
+      app: security-camera
   strategy:
     rollingUpdate:
       maxSurge: 25%
@@ -22,14 +22,14 @@ spec:
     metadata:
       creationTimestamp: null
       labels:
-        app: security_camera
+        app: security-camera
     spec:
       nodeSelector:
         kubernetes.io/hostname: raspberrypi2
       containers:
       - image: {{registry}}:{{buildId}}
         imagePullPolicy: IfNotPresent
-        name: security_camera
+        name: security-camera
         resources: {}
         terminationMessagePath: /dev/termination-log
         terminationMessagePolicy: File
@@ -56,16 +56,16 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app: security_camera
-  name: security_camera
+    app: security-camera
+  name: security-camera
   namespace: default
 spec:
   ports:
-  - name: security_camera
+  - name: security-camera
     nodePort: 31704
     port: 5000
     protocol: TCP
     targetPort: 5000
   selector:
-    app: security_camera
+    app: security-camera
   type: NodePort
