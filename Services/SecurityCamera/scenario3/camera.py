@@ -4,6 +4,10 @@ import imutils
 import time
 import numpy as np
 import requests
+import os
+
+SECTION=os.getenv('SECTION')
+GETURL="http://car:8000/scenario/{}".format(SECTION)
 
 close_time = 0
 delay = 20
@@ -36,7 +40,7 @@ class VideoCamera(object):
             flags=cv2.CASCADE_SCALE_IMAGE
         )
         if len(objects) > 0 and time.time() > close_time:
-            requests.get(url= 'http://raspberrypi2:31705/alarm')
+            requests.get(url= GETURL)
             close_time=time.time()+delay
         # Draw a rectangle around the objects
         for (x, y, w, h) in objects:

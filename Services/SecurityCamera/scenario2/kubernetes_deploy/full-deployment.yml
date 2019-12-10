@@ -1,0 +1,69 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  generation: {{buildId}}
+  labels:
+    app: security_camera
+  name: security_camera
+  namespace: default
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: security_camera
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: security_camera
+    spec:
+      containers:
+      - image: {{registry}}:{{buildId}}
+        imagePullPolicy: IfNotPresent
+        name: security_camera
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        volumeMounts:
+          - mountPath: /dev/vchiq
+            name: cameraAccess
+          - mountPath: /dev/vcsm
+            name: VideoCore
+        securityContext:
+          privileged: true 
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - name: cameraAccess
+        hostPath: 
+          path: /dev/vchiq
+      - name: VideoCore
+        hostPath:
+          path: /dev/vcsm
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: security_camera
+  name: security_camera
+  namespace: default
+spec:
+  ports:
+  - name: security_camera
+    nodePort: 31704
+    port: 5000
+    protocol: TCP
+    targetPort: 5000
+  selector:
+    app: security_camera
+  type: NodePort
