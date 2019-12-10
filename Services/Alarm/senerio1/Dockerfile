@@ -1,10 +1,8 @@
 FROM matancarmeli7/rpi-raspbian-opencv:latest
 RUN [ "cross-build-start" ]
-RUN apt-get update
-RUN apt-get install moc
-RUN pip install flask 
+RUN pip3 install flask simpleaudio
 COPY alarmSound.py .
-COPY Battlefield-3-M-COM-alarm-sound.mp3 .
+COPY Battlefield-3.wav .
 RUN [ "cross-build-end" ]
 EXPOSE 5000
-CMD ["/usr/bin/python", "alarmSound.py"] 
+CMD ["/usr/bin/python3", "alarmSound.py"] 
