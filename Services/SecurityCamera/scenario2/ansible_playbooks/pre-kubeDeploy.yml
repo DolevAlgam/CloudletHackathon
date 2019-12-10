@@ -3,6 +3,6 @@
   tasks:
   - name: template the kubernetes creation yml
     template:
-      src: "/var/lib/jenkins/workspace/{{jobName}}/kubernetes_deploy/full-deployment.yml"
-      dest: "/var/lib/jenkins/workspace/{{jobName}}/kubernetes_deploy/full-deployment.yml"
+      src: "/var/lib/jenkins/workspace/{{jobName}}/Services/SecurityCamera/scenario2/kubernetes_deploy/full-deployment.yml"
+      dest: "/var/lib/jenkins/workspace/{{jobName}}/Services/SecurityCamera/scenario2/kubernetes_deploy/full-deployment.yml"
       force: yes
