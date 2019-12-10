@@ -36,7 +36,7 @@ class VideoCamera(object):
             flags=cv2.CASCADE_SCALE_IMAGE
         )
         if len(objects) > 0 and time.time() > close_time:
-            requests.get(url= 'http://car:5000/scenario2')
+            requests.get(url= 'http://car:8000/scenario2')
             close_time=time.time()+delay
         # Draw a rectangle around the objects
         for (x, y, w, h) in objects:
