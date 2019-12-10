@@ -1,6 +1,6 @@
 FROM matancarmeli7/rpi-raspbian-opencv:latest
 RUN [ "cross-build-start" ]
-RUN pip install pygame
+RUN pip3 install pygame
 COPY alarmSound.py .
 COPY Battlefield-3-M-COM-alarm-sound.mp3 .
 RUN [ "cross-build-end" ]
