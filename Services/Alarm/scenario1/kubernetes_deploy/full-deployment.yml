@@ -24,6 +24,8 @@ spec:
       labels:
         app: alarm
     spec:
+    nodeSelector:
+      kubernetes.io/hostname: raspberrypi3
       containers:
       - image: {{registry}}:{{buildId}}
         imagePullPolicy: IfNotPresent
