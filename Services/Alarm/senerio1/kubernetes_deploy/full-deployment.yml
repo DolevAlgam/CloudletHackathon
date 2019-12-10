@@ -31,24 +31,12 @@ spec:
         resources: {}
         terminationMessagePath: /dev/termination-log
         terminationMessagePolicy: File
-        volumeMounts:
-          - mountPath: /dev/vchiq
-            name: camera-access
-          - mountPath: /dev/vcsm
-            name: video-core
         securityContext:
           privileged: true 
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       schedulerName: default-scheduler
       terminationGracePeriodSeconds: 30
-      volumes:
-      - name: camera-access
-        hostPath: 
-          path: /dev/vchiq
-      - name: video-core
-        hostPath:
-          path: /dev/vcsm
 ---
 apiVersion: v1
 kind: Service
