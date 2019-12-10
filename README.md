@@ -55,5 +55,4 @@ example url: http://car:8000/forward
 * scan - initialize weapon detection -- returns string "attack" or "back"
 
 ### Alarm
-* on - start alarm
-* off - stop alarm
+* on - start alarm (for 10 seconds)
