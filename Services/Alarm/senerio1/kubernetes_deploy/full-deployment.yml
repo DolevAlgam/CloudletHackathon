@@ -33,9 +33,9 @@ spec:
         terminationMessagePolicy: File
         volumeMounts:
           - mountPath: /dev/vchiq
-            name: cameraAccess
+            name: camera-access
           - mountPath: /dev/vcsm
-            name: VideoCore
+            name: video-core
         securityContext:
           privileged: true 
       dnsPolicy: ClusterFirst
@@ -43,10 +43,10 @@ spec:
       schedulerName: default-scheduler
       terminationGracePeriodSeconds: 30
       volumes:
-      - name: cameraAccess
+      - name: camera-access
         hostPath: 
           path: /dev/vchiq
-      - name: VideoCore
+      - name: video-core
         hostPath:
           path: /dev/vcsm
 ---
