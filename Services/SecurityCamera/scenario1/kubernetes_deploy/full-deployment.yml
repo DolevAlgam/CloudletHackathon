@@ -25,7 +25,7 @@ spec:
         app: security_camera
     spec:
       nodeSelector:
-        kubernetes.io/hostname: raspberrypi
+        kubernetes.io/hostname: raspberrypi2
       containers:
       - image: {{registry}}:{{buildId}}
         imagePullPolicy: IfNotPresent
