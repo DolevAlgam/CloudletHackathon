@@ -1,8 +1,8 @@
 import os
 import time
-from flask import Flask
+import flask
 
-app = Flask(__name__)
+app = flask.Flask(__name__)
 @app.route('/on')
 def on():
     os.system('mocp -p Battlefield-3-M-COM-alarm-sound.mp3')
