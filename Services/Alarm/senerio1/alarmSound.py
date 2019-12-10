@@ -7,7 +7,8 @@ app = Flask(__name__)
 pygame.init()
 
 @app.route('/alarm')
-    pygame.mixer.music.load('/home/pi/Desktop/Battlefield 3 M-COM alarm sound [$
+def alarm():
+    pygame.mixer.music.load('Battlefield-3-M-COM-alarm-sound.mp3')
     pygame.mixer.music.play(0)
     time.sleep(10)
 
