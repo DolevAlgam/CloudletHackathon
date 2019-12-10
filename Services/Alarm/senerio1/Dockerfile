@@ -1,7 +1,6 @@
 FROM matancarmeli7/rpi-raspbian-opencv:latest
 RUN [ "cross-build-start" ]
-RUN pip3 install pygame
-RUN apt-get install libsdl-ttf2.0-0
+RUN pip3 install playsound
 COPY alarmSound.py .
 COPY Battlefield-3-M-COM-alarm-sound.mp3 .
 RUN [ "cross-build-end" ]
