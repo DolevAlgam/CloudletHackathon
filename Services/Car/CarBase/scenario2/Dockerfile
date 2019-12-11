@@ -2,7 +2,7 @@ FROM resin/raspberrypi3-python
 #ENV INITSYSTEM on
 RUN [ "cross-build-start" ]
 
-#RUN apt-get update
+RUN apt-get update
 #RUN apt-get install python-pip
 RUN apt-get install python-smbus
 
