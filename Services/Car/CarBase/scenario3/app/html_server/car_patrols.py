@@ -5,7 +5,7 @@ import sts
 def scanSuspect():
 	#r = requests.get('http://jetson:5000/scan')
 	time.sleep(2)
-        if true:
+        if True:
                 sts.setSpeed(100)
                 sts.forward()
                 time.sleep(2)
