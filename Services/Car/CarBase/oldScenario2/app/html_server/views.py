@@ -44,6 +44,6 @@ def right(request):
         sts.turnRight()
         return HttpResponse("Turning Right")
 
-def initiate(request):
-	car_patrols.initiate()
-	return HttpResponse("Scenario Ran")
+def scenario2(request):
+	car_patrols.scenario2()
+	return HttpResponse("Scenario2 Ran")

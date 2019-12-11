@@ -1,0 +1,71 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  generation: {{buildId}}
+  labels:
+    app: car
+  name: car
+  namespace: default
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: car
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: car
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: raspberrypi
+      containers:
+      - image: {{registry}}
+        imagePullPolicy: IfNotPresent
+        name: car
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        volumeMounts:
+          - mountPath: /dev/vchiq
+            name: camera-access
+          - mountPath: /dev/vcsm
+            name: video-core
+        securityContext:
+          privileged: true 
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - name: camera-access
+        hostPath: 
+          path: /dev/vchiq
+      - name: video-core
+        hostPath:
+          path: /dev/vcsm
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: car
+  name: car
+  namespace: default
+spec:
+  ports:
+  - name: car
+    nodePort: 31706
+    port: 5000
+    protocol: TCP
+    targetPort: 5000
+  selector:
+    app: car
+  type: NodePort

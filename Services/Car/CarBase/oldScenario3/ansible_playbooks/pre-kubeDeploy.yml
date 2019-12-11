@@ -1,0 +1,8 @@
+- hosts: localhost
+  gather_facts: false
+  tasks:
+  - name: template the kubernetes creation yml
+    template:
+      src: "/var/lib/jenkins/workspace/{{jobName}}/Services/Car/CarBase/scenario3/kubernetes_deploy/full-deployment.yml"
+      dest: "/var/lib/jenkins/workspace/{{jobName}}/Services/Car/CarBase/scenario3/kubernetes_deploy/full-deployment.yml"
+      force: yes
