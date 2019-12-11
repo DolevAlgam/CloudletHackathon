@@ -27,6 +27,7 @@ class VideoCamera(object):
     def get_object(self, classifier):
         global delay
         global close_time
+        global counter
         frame = self.flip_if_needed(self.vs.read()).copy() 
         gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
         objects = classifier.detectMultiScale(
