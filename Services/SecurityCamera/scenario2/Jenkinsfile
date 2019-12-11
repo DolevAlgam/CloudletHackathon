@@ -35,7 +35,7 @@ pipeline {
     stage('template the kubernetes creation yml ') {
       steps{
         ansiblePlaybook(
-          playbook: 'ansible_playbooks/pre-kubeDeploy.yml',
+          playbook: 'Services/SecurityCamera/scenario2/ansible_playbooks/pre-kubeDeploy.yml',
           extraVars: [
               buildId: '$BUILD_NUMBER',
               jobName: '$JOB_NAME',
