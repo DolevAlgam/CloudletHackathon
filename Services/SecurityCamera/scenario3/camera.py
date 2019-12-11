@@ -40,7 +40,10 @@ class VideoCamera(object):
             flags=cv2.CASCADE_SCALE_IMAGE
         )
         if len(objects) > 0 and time.time() > close_time:
-            requests.get(url= GETURL)
+            try:
+	    	requests.get(url= GETURL, timeout=0.00000001)
+	    except requests.exceptions.ReadTimeout:
+		pass
             close_time=time.time()+delay
         # Draw a rectangle around the objects
         for (x, y, w, h) in objects:
