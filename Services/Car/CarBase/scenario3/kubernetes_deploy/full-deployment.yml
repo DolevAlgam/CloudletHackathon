@@ -63,9 +63,9 @@ spec:
   ports:
   - name: car
     nodePort: 31706
-    port: 5000
+    port: 8000
     protocol: TCP
-    targetPort: 5000
+    targetPort: 8000
   selector:
     app: car
   type: NodePort

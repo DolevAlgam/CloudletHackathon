@@ -44,12 +44,6 @@ def right(request):
         sts.turnRight()
         return HttpResponse("Turning Right")
 
-def scenario3(request):
-	section = request.path[-1]
-	if section == "A":
-		car_patrols.sectionA()
-		return HttpResponse("Section A Scanned")
-	elif section == "B":
-		car_patrols.sectionB()
-		return HttpResponse("Section B Scanned")
-	return HttpResponse("Unknown Section")
+def initiate(request):
+	car_patrols.initiate()
+	return HttpResponse("Scenario Ran")

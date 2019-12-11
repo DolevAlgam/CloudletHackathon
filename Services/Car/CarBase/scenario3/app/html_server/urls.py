@@ -8,6 +8,5 @@ urlpatterns = [
     url(r'^forward', views.forward),
     url(r'^backward', views.backward),
     url(r'^stop', views.stop),
-    url(r'^scenario3/sectionA', views.scenario3),
-    url(r'^scenario3/sectionB', views.scenario3)
+    url(r'^initiate', views.initiate)
 ]
