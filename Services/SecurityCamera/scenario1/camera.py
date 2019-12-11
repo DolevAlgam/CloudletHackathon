@@ -39,7 +39,7 @@ class VideoCamera(object):
         )
         if len(objects) > 0:
             counter=counter + 1
-         else:
+        else:
             counter=0
             
         if len(objects) > 0 and time.time() > close_time and counter == 200:
