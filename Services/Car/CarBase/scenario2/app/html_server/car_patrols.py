@@ -5,9 +5,10 @@ def initiate():
 	sts.forward()
 	time.sleep(1)
 	sts.turnLeft()
-	time.sleep(2)
-	for i in range(10):
+	time.sleep(1.7)
+	for i in range(4):
 		sts.backward()
-		time.sleep(3)
+		time.sleep(1.5)
 		sts.forward()
-		time.sleep(3)
+		time.sleep(1.5)
+	sts.stop()
