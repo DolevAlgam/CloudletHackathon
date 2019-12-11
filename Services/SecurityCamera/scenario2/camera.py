@@ -36,10 +36,10 @@ class VideoCamera(object):
             flags=cv2.CASCADE_SCALE_IMAGE
         )
         if len(objects) > 0 and time.time() > close_time:
-	    try:
-            	requests.get(url= 'http://car:8000/scenario2', timeout=0.00000001)
+            try:
+                requests.get(url= 'http://alarm:5000/on',timeout=0.00000001)
             except requests.exceptions.ReadTimeout:
-            	pass
+                pass
             close_time=time.time()+delay
         # Draw a rectangle around the objects
         for (x, y, w, h) in objects:
