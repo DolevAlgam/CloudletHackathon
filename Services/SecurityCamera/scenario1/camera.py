@@ -42,7 +42,7 @@ class VideoCamera(object):
         else:
             counter=0
             
-        if len(objects) > 0 and time.time() > close_time and counter == 75:
+        if len(objects) > 0 and time.time() > close_time and counter == 35:
             try:
             	requests.get(url= 'http://alarm:5000/on',timeout=0.5)
             except requests.exceptions.ReadTimeout:
