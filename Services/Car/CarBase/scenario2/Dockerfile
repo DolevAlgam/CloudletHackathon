@@ -7,10 +7,10 @@ RUN [ "cross-build-start" ]
 RUN apt-get install python-smbus
 
 #RUN pip install -U setuptools
-RUN pip install explorerhat
-RUN pip install requests
-RUN pip install django
-RUN pip install smbus
+RUN pip install explorerhat requests django smbus
+#RUN pip install requests
+#RUN pip install django
+#RUN pip install smbus
 
 ADD ./app /home/pi/app
 WORKDIR /home/pi/app
