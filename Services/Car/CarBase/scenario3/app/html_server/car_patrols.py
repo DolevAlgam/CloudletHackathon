@@ -5,13 +5,12 @@ import sts
 def scanSuspect():
 	#r = requests.get('http://jetson:5000/scan')
 	time.sleep(2)
-        if r.text == "attack":
+        if true:
                 sts.setSpeed(100)
                 sts.forward()
                 time.sleep(2)
                 sts.stop()
 		time.sleep(1)
-	return r.text
 
 def sectionA():
 	sts.forward()
