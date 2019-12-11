@@ -1,7 +1,7 @@
 FROM matancarmeli7/rpi-raspbian-opencv:latest
 RUN [ "cross-build-start" ]
 RUN pip3 install --upgrade pip
-RUN pip install --no-cache-dir flask jsonpickle PiCamera numpy requests imutils picamera[array] Flask-BasicAuth==0.2.0
+RUN pip install --no-cache-dir flask jsonpickle PiCamera numpy requests picamera[array]
 RUN mkdir ./models ./templates
 COPY models ./models
 COPY templates ./templates
