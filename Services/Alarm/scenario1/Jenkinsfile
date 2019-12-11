@@ -6,21 +6,12 @@ pipeline {
   }
   agent any
   stages {
-    stage('Cloning Git') {
-      steps {
-        git 'https://github.com/DolevAlgam/CloudletHackathon.git'
-      }
-    stage('Remove Unused docker image') {
-      steps{
-        sh "docker rmi $registry:39"
-      }
-    }
     stage('template the kubernetes creation yml ') {
       steps{
         ansiblePlaybook(
           playbook: 'Services/Alarm/scenario1/ansible_playbooks/pre-kubeDeploy.yml',
           extraVars: [
-              buildId: '39',
+              buildId: '$BUILD_NUMBER',
               jobName: '$JOB_NAME',
 	      registry: '$registry'
           ])
