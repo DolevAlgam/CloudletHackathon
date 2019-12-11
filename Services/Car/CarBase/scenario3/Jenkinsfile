@@ -1,6 +1,6 @@
 pipeline {
   environment {
-    registry = "matancarmeli7/car-2"
+    registry = "matancarmeli7/car-3"
     registryCredential = 'dockerhub'
     dockerImage = ''
   }
@@ -9,7 +9,7 @@ pipeline {
     stage('template the kubernetes creation yml ') {
       steps{
         ansiblePlaybook(
-          playbook: 'Services/Car/CarBase/scenario2/ansible_playbooks/pre-kubeDeploy.yml',
+          playbook: 'Services/Car/CarBase/scenario3/ansible_playbooks/pre-kubeDeploy.yml',
           extraVars: [
               buildId: '$BUILD_NUMBER',
               jobName: '$JOB_NAME',
@@ -19,7 +19,7 @@ pipeline {
     }
     stage('deploy the application on kubernetes cluster') {
         steps{
-            sh "kubectl apply -f /var/lib/jenkins/workspace/$JOB_NAME/Services/Car/CarBase/scenario2/kubernetes_deploy/full-deployment.yml"
+            sh "kubectl apply -f /var/lib/jenkins/workspace/$JOB_NAME/Services/Car/CarBase/scenario3/kubernetes_deploy/full-deployment.yml"
         }
     }
   }
