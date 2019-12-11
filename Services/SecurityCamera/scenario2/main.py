@@ -2,7 +2,6 @@ import cv2
 import sys
 from flask import Flask, render_template, Response
 from camera import VideoCamera
-from flask_basicauth import BasicAuth
 import time
 import threading
 
