@@ -7,6 +7,7 @@ import requests
 
 close_time = 0
 delay = 20
+counter = 0
 
 class VideoCamera(object):
 # initiate the VideoCamera object
@@ -35,9 +36,14 @@ class VideoCamera(object):
             minSize=(30, 30),
             flags=cv2.CASCADE_SCALE_IMAGE
         )
-        if len(objects) > 0 and time.time() > close_time:
+        if len(objects) > 0:
+            counter=counter + 1       
+        else:
+            counter=0
+
+        if len(objects) > 0 and time.time() > close_time and counter == 35:
             try:
-                requests.get(url= 'http://car:8000/scenerio2',timeout=0.5)
+                requests.get(url= 'http://car:8000/initiate',timeout=0.5)
             except requests.exceptions.ReadTimeout:
                 pass
             close_time=time.time()+delay
