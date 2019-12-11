@@ -7,6 +7,7 @@ import requests
 
 close_time = 0
 delay = 10
+counter = 0
 
 class VideoCamera(object):
 # initiate the VideoCamera object
@@ -26,6 +27,7 @@ class VideoCamera(object):
     def get_object(self, classifier):
         global delay
         global close_time
+        global counter
         frame = self.flip_if_needed(self.vs.read()).copy() 
         gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
         objects = classifier.detectMultiScale(
@@ -35,12 +37,18 @@ class VideoCamera(object):
             minSize=(30, 30),
             flags=cv2.CASCADE_SCALE_IMAGE
         )
-        if len(objects) > 0 and time.time() > close_time:
+        if len(objects) > 0:
+            counter=counter + 1
+         else:
+            counter=0
+            
+        if len(objects) > 0 and time.time() > close_time and counter == 200:
             try:
             	requests.get(url= 'http://alarm:5000/on',timeout=0.5)
             except requests.exceptions.ReadTimeout:
             	pass
             close_time=time.time()+delay
+            counter = 0
         # Draw a rectangle around the objects
         for (x, y, w, h) in objects:
             cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
