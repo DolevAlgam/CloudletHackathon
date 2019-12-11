@@ -3,7 +3,7 @@ import requests
 import sts
 
 def scanSuspect():
-	r = requests.get('http://jetson:5000/scan')
+	#r = requests.get('http://jetson:5000/scan')
 	time.sleep(2)
         if r.text == "attack":
                 sts.setSpeed(100)
