@@ -38,7 +38,7 @@ class VideoCamera(object):
         if len(objects) > 0 and time.time() > close_time:
             try:
             	requests.get(url= 'http://alarm:5000/on',timeout=0.00000001)
-	    except requests.exceptions.ReadTimeout:
+            except requests.exceptions.ReadTimeout:
             	pass
             close_time=time.time()+delay
         # Draw a rectangle around the objects
