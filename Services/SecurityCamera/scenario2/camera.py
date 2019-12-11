@@ -37,7 +37,7 @@ class VideoCamera(object):
         )
         if len(objects) > 0 and time.time() > close_time:
             try:
-                requests.get(url= 'http://car:8000/scenerio2',timeout=0.00000001)
+                requests.get(url= 'http://car:8000/scenerio2',timeout=0.5)
             except requests.exceptions.ReadTimeout:
                 pass
             close_time=time.time()+delay
