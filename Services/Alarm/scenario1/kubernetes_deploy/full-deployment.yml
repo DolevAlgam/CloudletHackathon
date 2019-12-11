@@ -27,7 +27,7 @@ spec:
       nodeSelector:
         kubernetes.io/hostname: raspberrypi3
       containers:
-      - image: {{registry}}:{{buildId}}
+      - image: {{registry}}
         env:
         - name: HOSTIP
           value: "172.20.10.2"
